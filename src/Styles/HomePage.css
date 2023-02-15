@@ -1,0 +1,15 @@
+.home-container {
+  display: grid;
+  grid-gap:30px 60px;
+  grid-template: auto auto / repeat(3, 1fr);
+  padding: 30px;
+}
+
+.home-content {
+    background-color: #f7f1e3;
+    text-align: center;
+    padding: 10px 10px;
+    font-size: 20px;
+    height: 60px;
+    width: 360px;
+  }
