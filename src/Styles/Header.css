@@ -1,0 +1,12 @@
+.header-wrapper {
+    background-color: blueviolet;
+    width: 100%;
+    height: 80px;
+    display: grid;
+    color: #c0392b;
+  }
+  .header-content {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+  }

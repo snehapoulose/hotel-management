@@ -13,3 +13,18 @@
     height: 60px;
     width: 360px;
   }
+  .home-header {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  .search-box {
+    width: 20%;
+    height: 40px;
+    padding: 10px;
+    border-style: groove;
+  }
+  p{
+    color: #2980b9;
+    font-weight: 600;
+  }

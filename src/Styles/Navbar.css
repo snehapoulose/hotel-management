@@ -1,4 +1,4 @@
-.header-content {
+.navbar-content {
   background-color: blueviolet;
   width: 100%;
   height: 80px;
@@ -18,7 +18,7 @@ a {
 a:hover {
   color: brown;
 }
-.header-content .header-links {
+.navbar-content .navbar-links {
   display: flex;
   flex-direction: row;
   margin-top: 30px;

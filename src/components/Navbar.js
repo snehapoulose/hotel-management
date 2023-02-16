@@ -5,9 +5,9 @@ import "../Styles/Navbar.css";
 export default function Navbar() {
   return (
     <>
-      <div className="header-content">
+      <div className="navbar-content">
         <h1>Booking Ark</h1>
-        <div className="header-links">
+        <div className="navbar-links">
           <Link to="user">User</Link>
           <Link to="admin">Admin</Link>
           <Link to="hotelAdmin">Hotel Admin</Link>
