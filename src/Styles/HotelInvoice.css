@@ -1,0 +1,18 @@
+.hotel-invoice{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* align-items: center; */
+    flex-direction: column;
+    color: #8e44ad;
+    margin-top: 10px;
+    height: 550px;
+}
+.invoice-icon{
+    font-size: 50px;
+}
+p{
+    color: #c0392b;
+    font-weight: 600;
+    font-size: 25px;
+}

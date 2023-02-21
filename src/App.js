@@ -3,9 +3,11 @@ import HomePage from './components/HomePage';
 import HotelList from './components/HotelList';
 import Admin from './pages/Admin';
 import HotelAdmin from './pages/HotelAdmin';
+import HotelInvoice from './pages/HotelInvoice';
 import User from './pages/User';
 
 function App() {
+
   return (
     <div >
       <Routes>
@@ -14,6 +16,7 @@ function App() {
         <Route path='/admin' element={<Admin/>}/>
         <Route path='/hotelAdmin' element={<HotelAdmin/>}/>
         <Route path='/hotelList' element={<HotelList/>}/>
+        <Route path='/hotelInvoice/:id' element={<HotelInvoice/>}/>
       </Routes>
     </div>
   );
