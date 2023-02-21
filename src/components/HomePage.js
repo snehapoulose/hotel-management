@@ -12,7 +12,6 @@ export default function HomePage() {
       .then((res) => res.json())
       .then((data) => setHotelData(data));
   }, []);
-  console.log(hotelData);
   console.log(searchHotel);
   return (
     <div>

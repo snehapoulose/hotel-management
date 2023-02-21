@@ -1,7 +1,7 @@
 import React from "react";
 // import { useParams } from 'react-router-dom';
 import "../Styles/HotelInvoice.css";
-import {TbFileInvoice} from "react-icons/tb"
+// import {TbFileInvoice} from "react-icons/tb"
 import {useNavigate} from 'react-router-dom';
 
 export default function HotelInvoice() {
@@ -28,7 +28,7 @@ export default function HotelInvoice() {
         <button onClick={backToHotelList}>Back</button>
       <div className="hotel-invoice">
         <h1>
-          <TbFileInvoice className='invoice-icon'/>
+          {/* <TbFileInvoice className='invoice-icon'/> */}
           HOTEL INVOICE
         </h1>
         <p>Hotel Name :{hotelReceipt.name}</p>
