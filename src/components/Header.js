@@ -10,9 +10,11 @@ export default function Header(props) {
   return (
     <div>
       <div className="header-wrapper">
+      <button onClick={backToHomePage} className="header-back" >Back</button>
         <div className="header-content">
-          <button onClick={backToHomePage}>Back</button>
+       
           <h1> Welcome {props.name} Page !! </h1>
+          
         </div>
       </div>
     </div>

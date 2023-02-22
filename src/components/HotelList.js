@@ -3,6 +3,8 @@ import Header from "./Header";
 import { useState, useEffect } from "react";
 import "../Styles/HomePage.css";
 import { Link } from "react-router-dom";
+import {GoLocation} from "react-icons/go";
+import {BsFillTelephoneFill} from "react-icons/bs"
 
 export default function HotelList() {
   const [hotelList, setHotelList] = useState([]);
@@ -21,10 +23,10 @@ export default function HotelList() {
               <h2>{hotel.name}</h2>
             </div>
             <div className="home-content">
-              <p>{hotel.address.city}</p>
+              <p>   <GoLocation/> {hotel.address.city}</p>
             </div>
             <div className="home-content">
-              <p>{hotel.phone}</p>
+              <p> <BsFillTelephoneFill/> {hotel.phone}</p>
             </div>
             <div className="home-content">
               <p>{hotel.website}</p>

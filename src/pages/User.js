@@ -2,6 +2,7 @@ import React from "react";
 import Header from "../components/Header";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import "../Styles/User.css"
 
 export default function User() {
   const [input, setInput] = useState({ email: "", password: "" });
@@ -51,41 +52,44 @@ export default function User() {
   return (
     <div>
       <Header name="User Page" />
-      {/* {Object.keys(formError).length === 0 && isSubmit ?(
-        <div>
-          Signed In successful
-        </div>
-        // <Navigate to="/admin"/>
-      ):(
-        <pre>{JSON.stringify(input,undefined,2)}</pre>
-      )
-      } */}
-
-      <form onSubmit={handleSubmit}>
+      <div className="form-container">
+      <form onSubmit={handleSubmit} className = "login-form">
+      <div class="form-header">
+        <h3>Login Form</h3>
+      </div>
         <p>{formError.email}</p>
         <label>
           Username:
+          <div className="form-group">
           <input
             type="email"
             placeholder="Enter your email-id"
             name="email"
             value={input.email}
             onChange={handleChange}
+            className= "form-input"
           />
+          </div>
         </label>
         <p>{formError.password}</p>
         <label>
           Password:
+          <div className="form-group">
           <input
             type="password"
             placeholder="Enter your password"
             name="password"
             value={input.password}
             onChange={handleChange}
+            className="form-input"
           />
+          </div>
         </label>
-        <button type="submit">LOG IN</button>
+        <div className="form-group">
+        <button type="submit" className="form-button">LOG IN</button>
+        </div>
       </form>
+      </div>
     </div>
   );
 }
