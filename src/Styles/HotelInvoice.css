@@ -16,3 +16,15 @@ p{
     font-weight: 600;
     font-size: 25px;
 }
+.header-back {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 40px;
+    margin-top: 20px;
+    font-size: 30px;
+    color: #4834d4;
+    font-weight: 800;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }

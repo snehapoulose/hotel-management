@@ -1,0 +1,44 @@
+.container {
+    display: flex;
+    background-color: azure;
+    height: 100px;
+    width: 400px;
+    justify-content: center;
+}
+.delete-button {
+    background: none;
+    border: none;
+    display: flex;
+    justify-content: center;
+    background-color: red;
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+    margin-top: 70px;
+    width: 90px;
+    height: 24px;
+  
+}
+.add-form {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+
+}
+.add-hotel {
+    padding: 10px;
+    border-radius: 10px;
+    width: 20%;
+}
+.add-button{
+    background: none;
+    border:  none;
+    margin-left: 20px;
+    width: 10%;
+    font-size: 20px;
+    padding: 10px;
+    text-transform: uppercase;
+    background-color: green;
+    color: beige;
+    cursor: pointer;
+}

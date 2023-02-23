@@ -28,6 +28,14 @@
     color: #2980b9;
     font-weight: 600;
   }
- button{
-  background-color: chartreuse;
- }
+.hotel-invoice-button{
+ background: none;
+ border: none;
+ height: 20px;
+ cursor: pointer;
+ background-color: blue;
+ color: white;
+ width: 90px;
+ height: 30px;
+
+}

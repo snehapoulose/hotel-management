@@ -31,13 +31,17 @@ export default function HotelList() {
             <div className="home-content">
               <p>{hotel.website}</p>
             </div>
-            <div className="home-content">
-            <Link to= {`/hotelInvoice/${hotel.id}`} >
+           <div className="home-content">
+            <Link to= {`/hotelInvoice/${hotel.id}`}  >
+           
                 <button onClick={()=>{
                     localStorage.setItem("hotelDetails",JSON.stringify(hotel));
-                }}>Book Hotel</button>
+                    console.log(hotel.name);
+                }} className="hotel-invoice-button">Book Hotel</button>
+                
                 </Link>
-            </div>
+                </div>
+            
           </div>
         ))}
       </div>
