@@ -2,7 +2,7 @@ import React from "react";
 import Header from "../components/Header";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "../Styles/User.css"
+import "../Styles/User.css";
 
 export default function User() {
   const [input, setInput] = useState({ email: "", password: "" });
@@ -32,14 +32,12 @@ export default function User() {
   const validate = (values) => {
     const errors = {};
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
-    const passwordRegex =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
+    const passwordRegex =/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
     if (!values.email) {
       errors.email = "Email -id is required";
     } else if (!emailRegex.test(values.email)) {
       errors.email = "This is not a valid email format";
-    }
-    if (!values.password) {
+    } else if (!values.password) {
       errors.password = "Password is required";
     } else if (!passwordRegex.test(values.password)) {
       errors.password = "This is not a valid password format";
@@ -53,42 +51,44 @@ export default function User() {
     <div>
       <Header name="User Page" />
       <div className="form-container">
-      <form onSubmit={handleSubmit} className = "login-form">
-      <div class="form-header">
-        <h3>Login Form</h3>
-      </div>
-        <p>{formError.email}</p>
-        <label>
-          Username:
-          <div className="form-group">
-          <input
-            type="email"
-            placeholder="Enter your email-id"
-            name="email"
-            value={input.email}
-            onChange={handleChange}
-            className= "form-input"
-          />
+        <form onSubmit={handleSubmit} className="login-form">
+          <div class="form-header">
+            <h3>Login Form</h3>
           </div>
-        </label>
-        <p>{formError.password}</p>
-        <label>
-          Password:
+          <p>{formError.email}</p>
+          <label>
+            Username:
+            <div className="form-group">
+              <input
+                type="email"
+                placeholder="Enter your email-id"
+                name="email"
+                value={input.email}
+                onChange={handleChange}
+                className="form-input"
+              />
+            </div>
+          </label>
+          <p>{formError.password}</p>
+          <label>
+            Password:
+            <div className="form-group">
+              <input
+                type="password"
+                placeholder="Enter your password"
+                name="password"
+                value={input.password}
+                onChange={handleChange}
+                className="form-input"
+              />
+            </div>
+          </label>
           <div className="form-group">
-          <input
-            type="password"
-            placeholder="Enter your password"
-            name="password"
-            value={input.password}
-            onChange={handleChange}
-            className="form-input"
-          />
+            <button type="submit" className="form-button">
+              LOG IN
+            </button>
           </div>
-        </label>
-        <div className="form-group">
-        <button type="submit" className="form-button">LOG IN</button>
-        </div>
-      </form>
+        </form>
       </div>
     </div>
   );
