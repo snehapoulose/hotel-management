@@ -9,7 +9,7 @@ export default function Navbar() {
         <h1>Booking Ark</h1>
         <div className="navbar-links">
           <Link to="user">User</Link>
-          <Link to="admin">Admin</Link>
+          <Link to="adminLogin">Admin</Link>
           <Link to="hotelAdmin">Hotel Admin</Link>
         </div>
       </div>

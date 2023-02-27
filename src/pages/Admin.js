@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import Header from "../components/Header";
+import { useNavigate,Link } from "react-router-dom";
 import "../Styles/Admin.css";
 
 export default function Admin() {
   const [adminHotel, setAdminHotel] = useState("");
   const [hotelList, setHotelList] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users")
@@ -27,24 +28,29 @@ export default function Admin() {
       </div>
     </div>
   ));
+  function backToHomePage() {
+    navigate("/");
+  }
   const handleChange = (event) => {
     setAdminHotel(event.target.value);
   };
   const handleSubmit = (event) => {
     event.preventDefault();
     // setHotelList((prevState) => [{ name: adminHotel }, ...prevState]);
-    if(adminHotel.trim().length !== 0) {
+    if (adminHotel.trim().length !== 0) {
       setHotelList((prevState) => [{ name: adminHotel }, ...prevState]);
-    }
-    else {
-      alert("Please enter the hotel name")
+    } else {
+      alert("Please enter the hotel name");
     }
   };
   console.log(adminHotel);
 
   return (
     <div>
-      <Header name="Admin" />
+      <button onClick={backToHomePage} className="header-back">
+        Back
+      </button>
+      <Link to = "/userList">Users List</Link>
       <form onSubmit={handleSubmit} className="add-form">
         <input
           type="text"
@@ -58,8 +64,6 @@ export default function Admin() {
           Add
         </button>
       </form>
-
-      {/* {adminHotelData} */}
       <div className="home-container">
         {/* {hotelList.map((hotel) => (
           <div>

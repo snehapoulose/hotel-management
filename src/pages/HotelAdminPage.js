@@ -1,17 +1,41 @@
-import React from 'react'
+import  React from 'react'
 import {useNavigate} from 'react-router-dom';
+import userList from '../userList.json'
 
 export default function Hotel() {
   const adminStore = JSON.parse(localStorage.getItem("adminDetails"));
   const navigate = useNavigate()
+  const usersList = userList.filter((users)=>{
+    if(users.hotelId === adminStore.id) {
+      return users;
+    }
+  })
   function backToHomePage(){
     navigate("/")
   }
+  console.log(usersList)
   return (
     <>
        <button onClick={backToHomePage} className ="header-back">Back</button>
         <div>
           <h1>Welcome {adminStore.name} Page</h1>
+          <h2>List of booked users:</h2>
+          <div className='tables-data'>
+            <table>
+            <tr>
+                <th>User ID</th>
+                <th>Name</th>
+            </tr>
+            {usersList.map((users)=>{
+              return(
+                <tr>
+                  <td>{users.id}</td>
+                  <td>{users.name}</td>
+                </tr>
+              )
+            })}
+          </table>
+          </div>
         </div>
     </>
   )

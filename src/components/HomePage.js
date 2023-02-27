@@ -31,11 +31,9 @@ export default function HomePage() {
           .filter((hotel) => {
             if (searchHotel === "") {
               return hotel;
-            } else if (
-              hotel.name.toLowerCase().includes(searchHotel.toLowerCase())
-            ) {
+            } else if (hotel.name.toLowerCase().includes(searchHotel.toLowerCase())) {
               return hotel;
-            }
+            } 
           })
           .map((hotel) => (
             <div>
