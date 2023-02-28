@@ -39,17 +39,18 @@
 .form-button:hover{
     background:red;
 }
-/* .table-data {
+  .tables-data {
+    margin-top: 130px;
     width: 100%;
-    height: 190vh;
+    height: 10vh;
     display: flex;
     justify-content: center;
     align-items: center;
-  } */
-  /* table {
+  }
+  table {
     border: 1px solid black;
     border-collapse: collapse;
-    height: 50%;
+    height: 100%;
     width: 50%;
   }
   th{
@@ -58,6 +59,11 @@
   th,td {
     border: 1px solid black;
     border-collapse: collapse;
-    height: 100px;
-    width: 300px;
-  } */
+    height: 10px;
+    width: 900px;
+  }
+  h1,h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

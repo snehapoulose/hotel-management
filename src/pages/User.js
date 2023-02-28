@@ -13,13 +13,11 @@ export default function User() {
   function handleChange(event) {
     const name = event.target.name;
     const value = event.target.value;
-    // setInput((values) => ({ ...values, [name]: value }));
     setInput({ ...input, [name]: value });
   }
 
   function handleSubmit(event) {
     event.preventDefault();
-    // alert(JSON.stringify(input, null, 2));
     setFormError(validate(input));
     setSubmit(true);
   }

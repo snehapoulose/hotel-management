@@ -42,3 +42,8 @@
     color: beige;
     cursor: pointer;
 }
+.user-list {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 60px;
+}

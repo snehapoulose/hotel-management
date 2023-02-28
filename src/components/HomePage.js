@@ -21,7 +21,7 @@ export default function HomePage() {
       <div className="home-header">
         <input
           type="search"
-          placeholder="Search hotel name"
+          placeholder="Search hotel name or location"
           className="search-box"
           onChange={(event) => setSearchHotel(event.target.value)}
         />
@@ -31,9 +31,15 @@ export default function HomePage() {
           .filter((hotel) => {
             if (searchHotel === "") {
               return hotel;
-            } else if (hotel.name.toLowerCase().includes(searchHotel.toLowerCase())) {
+            } else if (
+              hotel.name.toLowerCase().includes(searchHotel.toLowerCase()) ||
+              hotel.address.city
+                .toLowerCase()
+                .includes(searchHotel.toLowerCase())
+            ) {
               return hotel;
-            } 
+            }
+            
           })
           .map((hotel) => (
             <div>

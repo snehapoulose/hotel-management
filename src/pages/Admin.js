@@ -39,6 +39,7 @@ export default function Admin() {
     // setHotelList((prevState) => [{ name: adminHotel }, ...prevState]);
     if (adminHotel.trim().length !== 0) {
       setHotelList((prevState) => [{ name: adminHotel }, ...prevState]);
+      setAdminHotel('')
     } else {
       alert("Please enter the hotel name");
     }
@@ -47,10 +48,10 @@ export default function Admin() {
 
   return (
     <div>
-      <button onClick={backToHomePage} className="header-back">
-        Back
+      <button onClick={backToHomePage} className="header-logout">
+        Log Out
       </button>
-      <Link to = "/userList">Users List</Link>
+      <Link to = "/userList" className="user-list">Users List</Link>
       <form onSubmit={handleSubmit} className="add-form">
         <input
           type="text"
@@ -65,17 +66,6 @@ export default function Admin() {
         </button>
       </form>
       <div className="home-container">
-        {/* {hotelList.map((hotel) => (
-          <div>
-            <div className="home-content">
-              <h2>{hotel.name}</h2>
-            </div>
-            <div className="home-content">
-              <p>{hotel.address.city}</p>
-            </div>
-            <button  onClick={() => deleteByValue(hotel)}>Delete</button>
-          </div>
-        ))} */}
         {hotelData}
       </div>
     </div>

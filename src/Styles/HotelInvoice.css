@@ -16,13 +16,13 @@ p{
     font-weight: 600;
     font-size: 25px;
 }
-.header-back {
+.header-logout {
     display: flex;
     justify-content: flex-start;
     margin-left: 40px;
     margin-top: 20px;
     font-size: 30px;
-    color: #4834d4;
+    color: #c0392b;
     font-weight: 800;
     background: none;
     border: none;

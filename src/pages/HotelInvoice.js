@@ -6,11 +6,12 @@ export default function HotelInvoice() {
   const hotelReceipt = JSON.parse(localStorage.getItem("hotelDetails"));
   const navigate = useNavigate()
   function backToHotelList(){
-    navigate("/hotelList")
+    navigate("/")
+    localStorage.removeItem("hotelDetails")
   }
   return (
     <>
-        <button onClick={backToHotelList} className ="header-back">Back</button>
+        <button onClick={backToHotelList} className ="header-logout">Log Out</button>
       <div className="hotel-invoice">
         <h1>
           HOTEL INVOICE
