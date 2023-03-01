@@ -2,6 +2,7 @@ import React from 'react'
 import userList from '../userList.json'
 import '../Styles/userList.css'
 import { useNavigate } from 'react-router-dom'
+import Footer from './Footer';
 
 export default function UserList() {
     const navigate = useNavigate();
@@ -32,6 +33,7 @@ export default function UserList() {
         })}
          </table>
     </div>
+    <Footer/>
     </div>
   )
 }

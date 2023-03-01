@@ -2,6 +2,7 @@ import React,{useState,useEffect} from "react";
 import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
 import "../Styles/HotelAdmin.css";
+import Footer from "../components/Footer";
 
 export default function HotelAdmin() {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -90,6 +91,7 @@ export default function HotelAdmin() {
           </button>
         </form>
         </div>
+        <Footer/>
     </div>
   );
 }

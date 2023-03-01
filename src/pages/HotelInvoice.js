@@ -1,6 +1,7 @@
 import React from "react";
 import "../Styles/HotelInvoice.css";
 import {useNavigate} from 'react-router-dom';
+import Footer from "../components/Footer";
 
 export default function HotelInvoice() {
   const hotelReceipt = JSON.parse(localStorage.getItem("hotelDetails"));
@@ -22,6 +23,7 @@ export default function HotelInvoice() {
         <p>ZipCode : {hotelReceipt.address.zipcode}</p>
         <p>Phone : {hotelReceipt.phone}</p>
         <p>E-mail id : {hotelReceipt.email}</p>
+        <Footer/>
       </div>
     </>
   );

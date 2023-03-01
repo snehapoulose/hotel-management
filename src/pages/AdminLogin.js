@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import { useNavigate } from 'react-router-dom';
+import Footer from '../components/Footer';
 import Header from "../components/Header";
 
 export default function AdminLogin() {
@@ -85,6 +86,7 @@ export default function AdminLogin() {
           </div>
         </form>
         </div>
+        <Footer/>
     </div>
   )
 }

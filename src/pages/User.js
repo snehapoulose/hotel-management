@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../Styles/User.css";
+import Footer from "../components/Footer";
 
 export default function User() {
   const [input, setInput] = useState({ email: "", password: "" });
@@ -88,6 +89,7 @@ export default function User() {
           </div>
         </form>
       </div>
+      <Footer/>
     </div>
   );
 }

@@ -2,6 +2,7 @@ import  React from 'react'
 import {useNavigate} from 'react-router-dom';
 import userList from '../userList.json'
 import '../Styles/HotelAdmin.css'
+import Footer from '../components/Footer';
 
 export default function Hotel() {
   const adminStore = JSON.parse(localStorage.getItem("adminDetails"));
@@ -38,6 +39,7 @@ export default function Hotel() {
             })}
           </table>
           </div>
+          <Footer/>
         </div>
     </>
   )
