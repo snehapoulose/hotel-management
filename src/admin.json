@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "first_name": "Filippa",
+    "last_name": "Steels",
+    "email": "fsteels0@ted.com",
+    "password": "14WZGJKvf1wMkUPELnmhScNWj5pwE9wDaj"
+  },
+  {
+    "id": 2,
+    "first_name": "Harriot",
+    "last_name": "Philipart",
+    "email": "hphilipart1@eepurl.com",
+    "password": "1Baf9TboZg8vycvbSvXRPcGWpz15mMZGeC"
+  },
+  {
+    "id": 3,
+    "first_name": "Almeda",
+    "last_name": "Degnen",
+    "email": "adegnen2@china.com.cn",
+    "password": "1PNA8CFTXbXZzakkogFKWabnkWp8PPUj5x"
+  },
+  {
+    "id": 4,
+    "first_name": "Boycey",
+    "last_name": "Irce",
+    "email": "birce3@cbsnews.com",
+    "password": "1GhC5XAq2YwHi4VoWuxvtMUK48267DZZyw"
+  },
+  {
+    "id": 5,
+    "first_name": "Nathanael",
+    "last_name": "Rosenfield",
+    "email": "nrosenfield4@yale.edu",
+    "password": "1Ah7AA7YNkAPEohFVW3FsWgTHXB5jjyWVn"
+  }
+]

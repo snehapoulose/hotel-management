@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { GoLocation } from "react-icons/go";
 import { BsFillTelephoneFill } from "react-icons/bs";
 // import Calendar from "react-calendar";
-import Footer from "./Footer";
+// import Footer from "./Footer";
 import ReactPaginate from "react-paginate";
 
 export default function HotelList() {
@@ -144,7 +144,7 @@ const pageCount = Math.ceil(hotelList.length / usersPerPage);
         disabledClassName={"paginationDisabled"}
         activeClassName={"paginationActive"}
       />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

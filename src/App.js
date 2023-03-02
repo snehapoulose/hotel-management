@@ -8,6 +8,7 @@ import HotelInvoice from './pages/HotelInvoice';
 import AdminLogin from './pages/AdminLogin';
 import User from './pages/User';
 import UserList from './components/UserList';
+import Footer from './components/Footer';
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
         <Route path='/userList' element={<UserList/>}/>
         <Route path='/hotelInvoice/:id' element={<HotelInvoice/>}/>
       </Routes>
+      <Footer/>
     </div>
   );
 }
