@@ -1,8 +1,7 @@
-import React,{useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
 import "../Styles/HotelAdmin.css";
-// import Footer from "../components/Footer";
 
 export default function HotelAdmin() {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -37,14 +36,13 @@ export default function HotelAdmin() {
       var paswd = user.username;
       var num = 123;
       paswd += num;
-      if (user.email !== adminUsername || paswd !== adminPassword ) {
+      if (user.email !== adminUsername || paswd !== adminPassword) {
         errors.username = "Invalid credentials";
       } else if (user.email !== adminUsername && paswd !== adminPassword) {
         errors.username = "Invalid credentials";
       } else {
         localStorage.setItem("adminDetails", JSON.stringify(user));
-        navigate("/hotelAdminPage")
-
+        navigate("/hotelAdminPage");
       }
     });
     return errors;
@@ -53,14 +51,14 @@ export default function HotelAdmin() {
     <div>
       <Header name="Hotel Admin" />
       <div className="form-container">
-      <form onSubmit={handleSubmit} className="login-form">
-      <div class="form-header">
+        <form onSubmit={handleSubmit} className="login-form">
+          <div class="form-header">
             <h3> Admin Login Form</h3>
           </div>
-            <p>{formErrors.username}</p>
-            <label>
-              Username:
-              <div className="form-group">
+          <p>{formErrors.username}</p>
+          <label>
+            Username:
+            <div className="form-group">
               <input
                 className="form-input"
                 type="email"
@@ -69,13 +67,13 @@ export default function HotelAdmin() {
                 onChange={handleChange}
                 value={formData.email}
               />
-              </div>
-            </label>
-        
+            </div>
+          </label>
+
           <p>{formErrors.password}</p>
-            <label>
-              Password:
-              <div className="form-group">
+          <label>
+            Password:
+            <div className="form-group">
               <input
                 className="form-input"
                 type="password"
@@ -84,14 +82,13 @@ export default function HotelAdmin() {
                 onChange={handleChange}
                 value={formData.password}
               />
-              </div>
-            </label>
+            </div>
+          </label>
           <button type="submit" className="form-button">
             Log In
           </button>
         </form>
-        </div>
-        {/* <Footer/> */}
+      </div>
     </div>
   );
 }

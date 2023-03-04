@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate,Link } from "react-router-dom";
-// import Footer from "../components/Footer";
 import "../Styles/Admin.css";
 
 export default function Admin() {
@@ -69,7 +68,6 @@ export default function Admin() {
       <div className="home-container">
         {hotelData}
       </div>
-      {/* <Footer/> */}
     </div>
   );
 }

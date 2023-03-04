@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import "../Styles/HomePage.css";
 import { GoLocation } from "react-icons/go";
 import { BsFillTelephoneFill } from "react-icons/bs";
-// import Footer from "./Footer";
 
 export default function HomePage() {
   const [hotelData, setHotelData] = useState([]);
@@ -63,7 +62,6 @@ export default function HomePage() {
             </div>
           ))}
       </div>
-      {/* <Footer/> */}
     </div>
   );
 }

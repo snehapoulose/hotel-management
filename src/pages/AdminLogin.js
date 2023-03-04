@@ -1,19 +1,14 @@
 import React,{useState} from 'react'
 import { useNavigate } from 'react-router-dom';
 import admin from'../admin.json';
-// import Footer from '../components/Footer';
 import Header from "../components/Header";
 
 export default function AdminLogin() {
     const [input, setInput] = useState({ username: "", password: "" });
     const [formError, setFormError] = useState({});
-    // const [isSubmit, setSubmit] = useState(false);
     const navigate = useNavigate();
   
     function handleChange(event) {
-      // const name = event.target.name;
-      // const value = event.target.value
-      // setInput({ ...input, [name]: value });
       setInput((prevFormData) => {
         return {
           ...prevFormData,
@@ -25,31 +20,7 @@ export default function AdminLogin() {
     function handleSubmit(event) {
       event.preventDefault();
       setFormError(validate(input));
-      // setSubmit(true);
     }
-    // useEffect(() => {
-    //   console.log(formError);
-    //   if (Object.keys(formError).length === 0 && isSubmit) {
-    //     console.log(input);
-    //   }
-    // }, [formError]);
-    // const validate = (values) => {
-    //   const errors = {};
-    //   const usernameRegex = /[ERT]{3}\d{4}/
-    //   const passwordRegex =/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
-    //   if (!values.username) {
-    //     errors.username = "Username is required";
-    //   } else if (!usernameRegex.test(values.username)) {
-    //     errors.username = "This is not a valid username format";
-    //   } else if (!values.password) {
-    //     errors.password = "Password is required";
-    //   } else if (!passwordRegex.test(values.password)) {
-    //     errors.password = "This is not a valid password format";
-    //   } else {
-    //     navigate("/admin");
-    //   }
-    //   return errors;
-    // };
     const validate = ()=>{
       const errors ={};
       const username = input.username;
@@ -108,7 +79,6 @@ export default function AdminLogin() {
           </div>
         </form>
         </div>
-        {/* <Footer/> */}
     </div>
   )
 }
