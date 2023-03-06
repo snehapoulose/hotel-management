@@ -40,10 +40,11 @@ export default function User() {
     return errors;
   };
   // console.log(users);
-  const user12 = users.map((hotels) => {
-    return hotels.email;
-  });
-  console.log(user12);
+  // const user12 = users.map((hotels) => {
+  //   return hotels.email;
+  // });
+  // console.log(user12);
+  console.log(input);
   return (
     <div>
       <Header name="User Page" />

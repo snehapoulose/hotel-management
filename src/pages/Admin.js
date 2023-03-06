@@ -3,7 +3,7 @@ import { useNavigate,Link } from "react-router-dom";
 import "../Styles/Admin.css";
 
 export default function Admin() {
-  const [adminHotel, setAdminHotel] = useState("");
+  const [adminHotel, setAdminHotel] = useState({name:'', phone:'',});
   const [hotelList, setHotelList] = useState([]);
   const navigate = useNavigate();
 
@@ -20,29 +20,39 @@ export default function Admin() {
   };
   const hotelData = hotelList.map((hotels) => (
     <div>
-      <div className="container">
+      <div className="home-content">
         <p> {hotels.name} </p>
+        </div>
+        <div className="home-content">
+          <p>{hotels.phone}</p>
+        </div>
         <button onClick={() => deleteByValue(hotels)} className="delete-button">
           Delete
         </button>
-      </div>
+      
     </div>
   ));
   function backToHomePage() {
     navigate("/");
   }
   const handleChange = (event) => {
-    setAdminHotel(event.target.value);
+    // setAdminHotel(event.target.value);
+    setAdminHotel((prevFormData) => {
+      return {
+        ...prevFormData,
+        [event.target.name]: event.target.value,
+      };
+    });
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    // setHotelList((prevState) => [{ name: adminHotel }, ...prevState]);
-    if (adminHotel.trim().length !== 0) {
-      setHotelList((prevState) => [{ name: adminHotel }, ...prevState]);
-      setAdminHotel('')
-    } else {
-      alert("Please enter the hotel name");
-    }
+    setHotelList((prevState) => [{name:adminHotel.name,phone:adminHotel.phone},...prevState]);
+    // if (adminHotel.trim().length !== 0) {
+    //   setHotelList((prevState) => [{ name: adminHotel.name,phone:adminHotel.phone }, ...prevState]);
+    //   setAdminHotel('')
+    // } else {
+    //   alert("Please enter the hotel name");
+    // }
   };
   console.log(adminHotel);
 
@@ -56,8 +66,16 @@ export default function Admin() {
         <input
           type="text"
           placeholder="Hotel Name"
-          name="hotelName"
-          value={adminHotel}
+          name="name"
+          value={adminHotel.name}
+          onChange={handleChange}
+          className="add-hotel"
+        />
+        <input
+          type="text"
+          placeholder="Hotel Phone"
+          name="phone"
+          value={adminHotel.phone}
           onChange={handleChange}
           className="add-hotel"
         />
