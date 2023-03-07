@@ -29,7 +29,7 @@ export default function Login() {
   function handleSubmit(event) {
     event.preventDefault();
     setFormError(validate(formData));
-  
+
   }
   const validate = () => {
     const errors = {};
@@ -82,10 +82,13 @@ export default function Login() {
           }
         });
         return errors;
+        case (!selectedRole):
+          return errors;
     //    default:
     //    return null;
     }
   };
+  console.log(formData.role)
   return (
     <div>
     <Header name="Login Page" />

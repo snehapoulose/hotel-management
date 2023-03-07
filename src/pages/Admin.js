@@ -3,7 +3,7 @@ import { useNavigate,Link } from "react-router-dom";
 import "../Styles/Admin.css";
 
 export default function Admin() {
-  const [adminHotel, setAdminHotel] = useState({name:'', phone:'',});
+  const [adminHotel, setAdminHotel] = useState({name:"", phone:"",email:""});
   const [hotelList, setHotelList] = useState([]);
   const navigate = useNavigate();
 
@@ -26,6 +26,9 @@ export default function Admin() {
         <div className="home-content">
           <p>{hotels.phone}</p>
         </div>
+        <div className="home-content">
+          <p>{hotels.email}</p>
+        </div>
         <button onClick={() => deleteByValue(hotels)} className="delete-button">
           Delete
         </button>
@@ -46,7 +49,7 @@ export default function Admin() {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    setHotelList((prevState) => [{name:adminHotel.name,phone:adminHotel.phone},...prevState]);
+    setHotelList((prevState) => [{name:adminHotel.name,phone:adminHotel.phone,email:adminHotel.email},...prevState]);
     // if (adminHotel.trim().length !== 0) {
     //   setHotelList((prevState) => [{ name: adminHotel.name,phone:adminHotel.phone }, ...prevState]);
     //   setAdminHotel('')
@@ -76,6 +79,14 @@ export default function Admin() {
           placeholder="Hotel Phone"
           name="phone"
           value={adminHotel.phone}
+          onChange={handleChange}
+          className="add-hotel"
+        />
+        <input
+          type="email"
+          placeholder="Hotel Email"
+          name="email"
+          value={adminHotel.email}
           onChange={handleChange}
           className="add-hotel"
         />
