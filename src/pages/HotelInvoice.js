@@ -1,18 +1,12 @@
 import React from "react";
+import LogOutPage from "../components/LogOutPage";
 import "../Styles/HotelInvoice.css";
-import { useNavigate } from "react-router-dom";
 
 export default function HotelInvoice() {
   const hotelReceipt = JSON.parse(localStorage.getItem("hotelDetails"));
-  const navigate = useNavigate();
-  function backToHotelList() {
-    navigate("/");
-  }
   return (
     <>
-      <button onClick={backToHotelList} className="header-logout">
-        Log Out
-      </button>
+      <LogOutPage/>
       <div className="hotel-invoice">
         <h1>HOTEL INVOICE</h1>
         <p>Hotel Name :{hotelReceipt.name}</p>

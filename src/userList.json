@@ -58,6 +58,18 @@
         "name": "Richard",
         "hotelName":"Patricia Lebsack",
         "hotelId":4
+    },
+    {
+        "id":1011,
+        "name":"John",
+        "hotelName":"Mrs. Dennis Schulist",
+        "hotelId":6
+    },
+    {
+        "id":1012,
+        "name":"Tom",
+        "hotelName":"Nicholas Runolfsdottir V",
+        "hotelId":8
     }
 
 ]

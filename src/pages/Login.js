@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import users from "../users.json";
 import admin from "../admin.json";
+import useFetch from "../hooks/useFetch";
 
 export default function Login() {
   const [formData, setFormData] = useState({
@@ -11,13 +12,8 @@ export default function Login() {
     password: "",
   });
   const [formError, setFormError] = useState({});
-  const [hotelAdmin, setHotelAdmin] = useState([]);
   const navigate = useNavigate();
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((res) => res.json())
-      .then((data) => setHotelAdmin(data));
-  }, []);
+  const [hotelAdmin] = useFetch("https://jsonplaceholder.typicode.com/users");
   function handleChange(event) {
     setFormData((prevFormData) => {
       return {
@@ -29,69 +25,110 @@ export default function Login() {
   function handleSubmit(event) {
     event.preventDefault();
     setFormError(validate(formData));
-
   }
   const validate = () => {
     const errors = {};
     const username = formData.email;
     const password = formData.password;
     const selectedRole = formData.role;
-    switch (selectedRole) {
-      // case "select role":
-      //     alert("Select role")
-      case "admin":
-        // return console.log("admin role");
-        admin.forEach((admins) => {
-          if (admins.email !== username || admins.password !== password) {
-            errors.username = "Invalid credentials or invalid role";
-          } else if (
-            admins.email !== username &&
-            admins.password !== password
-          ) {
-            errors.password = "Invalid credentials or invalid role";
-          } else {
-            navigate("/admin");
-          }
-        });
-        return errors;
-      case "hotel admin":
-        // return console.log("hotel admin role");
-        hotelAdmin.forEach((user) => {
-          var paswd = user.username;
-          var num = 123;
-          paswd += num;
-          if (user.email !== username || paswd !== password) {
-            errors.username = "Invalid credentials or invalid role";
-          } else if (user.email !== username && paswd !== password) {
-            errors.username = "Invalid credentials or invalid role";
-          } else {
-            localStorage.setItem("adminDetails", JSON.stringify(user));
-            navigate("/hotelAdminPage");
-          }
-        });
-        return errors;
-      case "user":
-        users.forEach((user) => {
-          if (user.email !== username || user.password !== password) {
-            errors.username = "Invalid credentials or invalid role";
-          } else if (user.email !== username && user.password !== password) {
-            errors.password = "Invalid credentials or invalid role";
-          } else {
-            localStorage.setItem("usersDetails", JSON.stringify(user));
-            navigate("/hotelList");
-          }
-        });
-        return errors;
-        case (!selectedRole):
-          return errors;
-    //    default:
-    //    return null;
+    // switch (selectedRole) {
+    //   // case "select role":
+    //   //     alert("Select role")
+    //   case "admin":
+    //     // return console.log("admin role");
+    //     admin.forEach((admins) => {
+    //       if (admins.email !== username || admins.password !== password) {
+    //         errors.username = "Invalid credentials or invalid role";
+    //       } else if (
+    //         admins.email !== username &&
+    //         admins.password !== password
+    //       ) {
+    //         errors.password = "Invalid credentials or invalid role";
+    //       } else {
+    //         navigate("/admin");
+    //       }
+    //     });
+    //     return errors;
+    //   case "hotel admin":
+    //     // return console.log("hotel admin role");
+    //     hotelAdmin.forEach((user) => {
+    //       var paswd = user.username;
+    //       var num = 123;
+    //       paswd += num;
+    //       if (user.email !== username || paswd !== password) {
+    //         errors.username = "Invalid credentials or invalid role";
+    //       } else if (user.email !== username && paswd !== password) {
+    //         errors.username = "Invalid credentials or invalid role";
+    //       } else {
+    //         localStorage.setItem("hotelAdminDetails", JSON.stringify(user));
+    //         navigate("/hotelAdminPage");
+    //       }
+    //     });
+    //     return errors;
+    //   case "user":
+    //     users.forEach((user) => {
+    //       if (user.email !== username || user.password !== password) {
+    //         errors.username = "Invalid credentials or invalid role";
+    //       } else if (user.email !== username && user.password !== password) {
+    //         errors.password = "Invalid credentials or invalid role";
+    //       } else {
+    //         localStorage.setItem("usersDetails", JSON.stringify(user));
+    //         navigate("/hotelList");
+    //       }
+    //     });
+    //     return errors;
+    //     case (!selectedRole):
+    //       return errors;
+    // }
+    if (selectedRole === "admin") {
+      admin.forEach((admins) => {
+        if (admins.email !== username || admins.password !== password) {
+          errors.username = "Invalid credentials or invalid role";
+        } else if (admins.email !== username && admins.password !== password) {
+          errors.password = "Invalid credentials or invalid role";
+        } else {
+          localStorage.setItem("adminDetails",JSON.stringify(admins))
+          navigate("/admin");
+        }
+      });
+      return errors;
+    } else if (selectedRole === "hotel admin") {
+      hotelAdmin.forEach((user) => {
+        var paswd = user.username;
+        var num = 123;
+        paswd += num;
+        if (user.email !== username || paswd !== password) {
+          errors.username = "Invalid credentials or invalid role";
+        } else if (user.email !== username && paswd !== password) {
+          errors.username = "Invalid credentials or invalid role";
+        } else {
+          localStorage.setItem("hotelAdminDetails", JSON.stringify(user));
+          navigate("/hotelAdminPage");
+        }
+      });
+      return errors;
+    } else if (selectedRole === "user") {
+      users.forEach((user) => {
+        if (user.email !== username || user.password !== password) {
+          errors.username = "Invalid credentials or invalid role";
+        } else if (user.email !== username && user.password !== password) {
+          errors.password = "Invalid credentials or invalid role";
+        } else {
+          localStorage.setItem("usersDetails", JSON.stringify(user));
+          navigate("/hotelList");
+        }
+      });
+      return errors;
+    } 
+    else  {
+      return errors;
     }
   };
-  console.log(formData.role)
+  console.log(formData.role);
   return (
     <div>
-    <Header name="Login Page" />
+      {/* <p>This Test</p> */}
+      <Header name="Login " />
       <div className="form-container">
         <form onSubmit={handleSubmit} className="login-form">
           <div class="form-header">
@@ -99,37 +136,43 @@ export default function Login() {
           </div>
           <label>
             Select a role
-            <select name="role" value={formData.role} onChange={handleChange} className="form-input">
+            <select
+              name="role"
+              value={formData.role}
+              onChange={handleChange}
+              className="form-input"
+            >
               <option value="">Select a role</option>
+              <option value="user">User</option>
               <option value="admin">Admin</option>
               <option value="hotel admin">Hotel Admin</option>
-              <option value="user">User</option>
+           
             </select>
           </label>
           <p>{formError.username}</p>
           <label>
             Username:
             <div className="form-group">
-            <input
-              type="text"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              className="form-input"
-            />
+              <input
+                type="text"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                className="form-input"
+              />
             </div>
           </label>
           <p>{formError.password}</p>
           <label>
             Password:
             <div className="form-group">
-            <input
-              type="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              className="form-input"
-            />
+              <input
+                type="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                className="form-input"
+              />
             </div>
           </label>
           {/* <select name="role" value={formData.role} onChange={handleChange}>
@@ -139,9 +182,9 @@ export default function Login() {
           <option value="user">User</option>
         </select> */}
           <div className="form-group">
-          <button type="submit" className="form-button">
-            LOG IN
-          </button>
+            <button type="submit" className="form-button">
+              LOG IN
+            </button>
           </div>
         </form>
       </div>

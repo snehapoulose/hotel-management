@@ -1,25 +1,19 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import userList from "../userList.json";
 import "../Styles/HotelAdmin.css";
+import LogOutPage from "../components/LogOutPage";
 
 export default function Hotel() {
-  const adminStore = JSON.parse(localStorage.getItem("adminDetails"));
-  const navigate = useNavigate();
+  const adminStore = JSON.parse(localStorage.getItem("hotelAdminDetails"));
   const usersList = userList.filter((users) => {
     if (users.hotelId === adminStore.id) {
       return users;
     }
   });
-  function backToHomePage() {
-    navigate("/");
-  }
   console.log(usersList);
   return (
     <>
-      <button onClick={backToHomePage} className="header-logout">
-        Log Out
-      </button>
+      <LogOutPage/>
       <div>
         <h1>Welcome {adminStore.name} 's Page</h1>
         <h2>List of booked users:</h2>

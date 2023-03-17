@@ -1,9 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate,Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "../Styles/Admin.css";
+// import LogOutPage from "../components/LogOutPage";
 
 export default function Admin() {
-  const [adminHotel, setAdminHotel] = useState({name:"", phone:"",email:""});
+  const [adminHotel, setAdminHotel] = useState({
+    name: "",
+    phone: "",
+    email: "",
+  });
   const [hotelList, setHotelList] = useState([]);
   const navigate = useNavigate();
 
@@ -20,23 +25,24 @@ export default function Admin() {
   };
   const hotelData = hotelList.map((hotels) => (
     <div>
-      <div className="home-content">
+      <div className="home-contents">
         <p> {hotels.name} </p>
-        </div>
-        <div className="home-content">
-          <p>{hotels.phone}</p>
-        </div>
-        <div className="home-content">
-          <p>{hotels.email}</p>
-        </div>
-        <button onClick={() => deleteByValue(hotels)} className="delete-button">
-          Delete
-        </button>
-      
+      </div>
+      <div className="home-contents">
+        <p>{hotels.phone}</p>
+      </div>
+      <div className="home-contents">
+        <p>{hotels.email}</p>
+      </div>
+      <button onClick={() => deleteByValue(hotels)} className="delete-button">
+        Delete
+      </button>
     </div>
   ));
   function backToHomePage() {
     navigate("/");
+    localStorage.removeItem("adminDetails")
+    localStorage.removeItem("usersDetails")
   }
   const handleChange = (event) => {
     // setAdminHotel(event.target.value);
@@ -49,7 +55,19 @@ export default function Admin() {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    setHotelList((prevState) => [{name:adminHotel.name,phone:adminHotel.phone,email:adminHotel.email},...prevState]);
+    setHotelList((prevState) => [
+      {
+        name: adminHotel.name,
+        phone: adminHotel.phone,
+        email: adminHotel.email,
+      },
+      ...prevState,
+    ]);
+    setAdminHotel({
+      name:"",
+      phone:"",
+      email:""
+    })
     // if (adminHotel.trim().length !== 0) {
     //   setHotelList((prevState) => [{ name: adminHotel.name,phone:adminHotel.phone }, ...prevState]);
     //   setAdminHotel('')
@@ -64,7 +82,10 @@ export default function Admin() {
       <button onClick={backToHomePage} className="header-logout">
         Log Out
       </button>
-      <Link to = "/userList" className="user-list">Users List</Link>
+      {/* <LogOutPage/> */}
+      <Link to="/userList" className="user-list">
+        Users List
+      </Link>
       <form onSubmit={handleSubmit} className="add-form">
         <input
           type="text"
@@ -94,9 +115,7 @@ export default function Admin() {
           Add
         </button>
       </form>
-      <div className="home-container">
-        {hotelData}
-      </div>
+      <div className="home-container">{hotelData}</div>
     </div>
   );
 }

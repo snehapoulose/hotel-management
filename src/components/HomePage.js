@@ -1,20 +1,16 @@
 import React from "react";
 import Navbar from "./Navbar";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "../Styles/HomePage.css";
 import { GoLocation } from "react-icons/go";
 import { BsFillTelephoneFill } from "react-icons/bs";
+import useFetch from "../hooks/useFetch";
 
 export default function HomePage() {
-  const [hotelData, setHotelData] = useState([]);
   const [searchHotel, setSearchHotel] = useState("");
-
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((res) => res.json())
-      .then((data) => setHotelData(data));
-  }, []);
+  const [hotelData] = useFetch("https://jsonplaceholder.typicode.com/users");
   console.log(searchHotel);
+
   return (
     <div>
       <Navbar />
@@ -39,7 +35,6 @@ export default function HomePage() {
             ) {
               return hotel;
             }
-            
           })
           .map((hotel) => (
             <div>
