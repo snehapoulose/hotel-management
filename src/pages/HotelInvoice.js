@@ -1,17 +1,16 @@
 import React from "react";
-import LogOutPage from "../components/LogOutPage";
+import Header from "../components/Header";
 import "../Styles/HotelInvoice.css";
 
 export default function HotelInvoice() {
   const hotelReceipt = JSON.parse(localStorage.getItem("hotelDetails"));
   return (
     <>
-      <LogOutPage/>
+      <Header name="Hotel Invoice" />
       <div className="hotel-invoice">
-        <h1>HOTEL INVOICE</h1>
         <p>Hotel Name :{hotelReceipt.name}</p>
         <p>
-          Address : {hotelReceipt.address.street} {hotelReceipt.address.suite}{" "}
+          Address : {hotelReceipt.address.street} {hotelReceipt.address.suite}
         </p>
         <p>{hotelReceipt.address.city}</p>
         <p>ZipCode : {hotelReceipt.address.zipcode}</p>

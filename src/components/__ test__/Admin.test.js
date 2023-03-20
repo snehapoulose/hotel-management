@@ -5,29 +5,29 @@ describe('Test the admin component', () => {
     test("render the admin page with  add button and delete button",async()=>{
         render (<Router><Admin/></Router>)
         const buttonList = await screen.findAllByRole("button");
-        expect(buttonList).toHaveLength(2);
+        expect(buttonList).toHaveLength(4);
     })
     test("render the admin page with users list",async()=>{
         render(<Router><Admin/></Router>)
-        const linkElement = screen.getByText(/list/i);
+        const linkElement = screen.getByText(/List/i);
         expect(linkElement).toBeInTheDocument;
     })
     it("should render the hotel names when api responds",async()=>{
         render(<Router><Admin/></Router>);
         await waitFor(()=>{
-          screen.getByText("Kurtis Weissnat");
+          screen.getByText("Ervin Howell");
         });
       })
       it("should render the hotel phone no when api responds",async()=>{
         render(<Router><Admin/></Router>);
         await waitFor(()=>{
-          screen.getByText("024-648-3804");
+          screen.getByText("1-770-736-8031 x56442");
         });
       })
       it("should render the hotel website when api responds",async()=>{
         render(<Router><Admin/></Router>);
         await waitFor(()=>{
-          screen.getByText("Rey.Padberg@karina.biz");
+          screen.getByText("Shanna@melissa.tv");
         });
       })
 });

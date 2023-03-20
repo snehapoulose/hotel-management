@@ -2,6 +2,7 @@ import {render,screen,waitFor} from '@testing-library/react';
 import HotelList from '../HotelList';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Header from '../Header';
+import React from 'react';
 
 describe("Test the HotelList component" ,()=>{
     test("render the hotelList component with Book Hotel button",async()=>{

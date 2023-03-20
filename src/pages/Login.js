@@ -31,55 +31,6 @@ export default function Login() {
     const username = formData.email;
     const password = formData.password;
     const selectedRole = formData.role;
-    // switch (selectedRole) {
-    //   // case "select role":
-    //   //     alert("Select role")
-    //   case "admin":
-    //     // return console.log("admin role");
-    //     admin.forEach((admins) => {
-    //       if (admins.email !== username || admins.password !== password) {
-    //         errors.username = "Invalid credentials or invalid role";
-    //       } else if (
-    //         admins.email !== username &&
-    //         admins.password !== password
-    //       ) {
-    //         errors.password = "Invalid credentials or invalid role";
-    //       } else {
-    //         navigate("/admin");
-    //       }
-    //     });
-    //     return errors;
-    //   case "hotel admin":
-    //     // return console.log("hotel admin role");
-    //     hotelAdmin.forEach((user) => {
-    //       var paswd = user.username;
-    //       var num = 123;
-    //       paswd += num;
-    //       if (user.email !== username || paswd !== password) {
-    //         errors.username = "Invalid credentials or invalid role";
-    //       } else if (user.email !== username && paswd !== password) {
-    //         errors.username = "Invalid credentials or invalid role";
-    //       } else {
-    //         localStorage.setItem("hotelAdminDetails", JSON.stringify(user));
-    //         navigate("/hotelAdminPage");
-    //       }
-    //     });
-    //     return errors;
-    //   case "user":
-    //     users.forEach((user) => {
-    //       if (user.email !== username || user.password !== password) {
-    //         errors.username = "Invalid credentials or invalid role";
-    //       } else if (user.email !== username && user.password !== password) {
-    //         errors.password = "Invalid credentials or invalid role";
-    //       } else {
-    //         localStorage.setItem("usersDetails", JSON.stringify(user));
-    //         navigate("/hotelList");
-    //       }
-    //     });
-    //     return errors;
-    //     case (!selectedRole):
-    //       return errors;
-    // }
     if (selectedRole === "admin") {
       admin.forEach((admins) => {
         if (admins.email !== username || admins.password !== password) {
@@ -87,7 +38,7 @@ export default function Login() {
         } else if (admins.email !== username && admins.password !== password) {
           errors.password = "Invalid credentials or invalid role";
         } else {
-          localStorage.setItem("adminDetails",JSON.stringify(admins))
+          localStorage.setItem("adminDetails", JSON.stringify(admins));
           navigate("/admin");
         }
       });
@@ -119,15 +70,13 @@ export default function Login() {
         }
       });
       return errors;
-    } 
-    else  {
+    } else {
       return errors;
     }
   };
   console.log(formData.role);
   return (
     <div>
-      {/* <p>This Test</p> */}
       <Header name="Login " />
       <div className="form-container">
         <form onSubmit={handleSubmit} className="login-form">
@@ -142,11 +91,10 @@ export default function Login() {
               onChange={handleChange}
               className="form-input"
             >
-              <option value="">Select a role</option>
+              <option value="select role">Select a role</option>
               <option value="user">User</option>
               <option value="admin">Admin</option>
               <option value="hotel admin">Hotel Admin</option>
-           
             </select>
           </label>
           <p>{formError.username}</p>
@@ -175,12 +123,6 @@ export default function Login() {
               />
             </div>
           </label>
-          {/* <select name="role" value={formData.role} onChange={handleChange}>
-          <option value="select role">Select a role</option>
-          <option value="admin">Admin</option>
-          <option value="hotel admin">Hotel Admin</option>
-          <option value="user">User</option>
-        </select> */}
           <div className="form-group">
             <button type="submit" className="form-button">
               LOG IN

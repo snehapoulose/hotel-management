@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../Styles/Admin.css";
-// import LogOutPage from "../components/LogOutPage";
+import ReactPaginate from "react-paginate";
+import LogOutPage from "../components/LogOutPage";
 
 export default function Admin() {
   const [adminHotel, setAdminHotel] = useState({
@@ -10,7 +11,9 @@ export default function Admin() {
     email: "",
   });
   const [hotelList, setHotelList] = useState([]);
-  const navigate = useNavigate();
+  const [pageNumber, setPageNumber] = useState(0);
+  const usersPerPage = 2;
+  const pagesVisited = pageNumber * usersPerPage;
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users")
@@ -23,29 +26,35 @@ export default function Admin() {
       return hotelValues.filter((hotel) => hotel !== value);
     });
   };
-  const hotelData = hotelList.map((hotels) => (
-    <div>
-      <div className="home-contents">
-        <p> {hotels.name} </p>
-      </div>
-      <div className="home-contents">
-        <p>{hotels.phone}</p>
-      </div>
-      <div className="home-contents">
-        <p>{hotels.email}</p>
-      </div>
-      <button onClick={() => deleteByValue(hotels)} className="delete-button">
-        Delete
-      </button>
-    </div>
-  ));
-  function backToHomePage() {
-    navigate("/");
-    localStorage.removeItem("adminDetails")
-    localStorage.removeItem("usersDetails")
-  }
+  const hotelData = hotelList
+    .slice(pagesVisited, pagesVisited + usersPerPage)
+    .map((hotel) => {
+      return (
+        <div>
+          <div className="home-contents">
+            <h2>{hotel.name}</h2>
+          </div>
+          <div className="home-contents">
+            <p> {hotel.phone}</p>
+          </div>
+          <div className="home-contents">
+            <p>{hotel.email}</p>
+          </div>
+          <button
+            onClick={() => deleteByValue(hotel)}
+            className="delete-button"
+          >
+            Delete
+          </button>
+        </div>
+      );
+    });
+  const pageCount = Math.ceil(hotelList.length / usersPerPage);
+
+  const changePage = ({ selected }) => {
+    setPageNumber(selected);
+  };
   const handleChange = (event) => {
-    // setAdminHotel(event.target.value);
     setAdminHotel((prevFormData) => {
       return {
         ...prevFormData,
@@ -64,25 +73,16 @@ export default function Admin() {
       ...prevState,
     ]);
     setAdminHotel({
-      name:"",
-      phone:"",
-      email:""
-    })
-    // if (adminHotel.trim().length !== 0) {
-    //   setHotelList((prevState) => [{ name: adminHotel.name,phone:adminHotel.phone }, ...prevState]);
-    //   setAdminHotel('')
-    // } else {
-    //   alert("Please enter the hotel name");
-    // }
+      name: "",
+      phone: "",
+      email: "",
+    });
   };
   console.log(adminHotel);
 
   return (
     <div>
-      <button onClick={backToHomePage} className="header-logout">
-        Log Out
-      </button>
-      {/* <LogOutPage/> */}
+      <LogOutPage />
       <Link to="/userList" className="user-list">
         Users List
       </Link>
@@ -94,6 +94,7 @@ export default function Admin() {
           value={adminHotel.name}
           onChange={handleChange}
           className="add-hotel"
+          required
         />
         <input
           type="text"
@@ -102,6 +103,7 @@ export default function Admin() {
           value={adminHotel.phone}
           onChange={handleChange}
           className="add-hotel"
+          required
         />
         <input
           type="email"
@@ -110,12 +112,24 @@ export default function Admin() {
           value={adminHotel.email}
           onChange={handleChange}
           className="add-hotel"
+          required
         />
         <button type="submit" className="add-button">
           Add
         </button>
       </form>
       <div className="home-container">{hotelData}</div>
+      <ReactPaginate
+        previousLabel={"Previous"}
+        nextLabel={"Next"}
+        pageCount={pageCount}
+        onPageChange={changePage}
+        containerClassName={"paginationBttns"}
+        previousLinkClassName={"previousBttn"}
+        nextLinkClassName={"nextBttn"}
+        disabledClassName={"paginationDisabled"}
+        activeClassName={"paginationActive"}
+      />
     </div>
   );
 }

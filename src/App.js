@@ -22,7 +22,14 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route path="/hotelList" element={<ProtectedRoute><HotelList /></ProtectedRoute>} />
+        <Route
+          path="/hotelList"
+          element={
+            <ProtectedRoute>
+              <HotelList />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/hotelAdminPage" element={<HotelAdminPage />} />
         <Route
           path="/userList"
@@ -32,7 +39,14 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route path="/hotelInvoice/:id" element={<ProtectedRoute><HotelInvoice /></ProtectedRoute>} />
+        <Route
+          path="/hotelInvoice/:id"
+          element={
+            <ProtectedRoute>
+              <HotelInvoice />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
       <Footer />
     </div>
@@ -42,7 +56,7 @@ function App() {
 export default App;
 function ProtectedRoute(props) {
   // const isAuthenticated = JSON.parse(localStorage.getItem("adminDetails"));
-  const userAuthenticated =JSON.parse(localStorage.getItem("usersDetails"));
+  const userAuthenticated = JSON.parse(localStorage.getItem("usersDetails"));
   // if (
   //   isAuthenticated &&
   //   isAuthenticated.password &&
@@ -51,10 +65,14 @@ function ProtectedRoute(props) {
   // ) {
   //   return props.children;
   // }
-   if (userAuthenticated && userAuthenticated.password && userAuthenticated.password.length > 0 && userAuthenticated.email ){
+  if (
+    userAuthenticated &&
+    userAuthenticated.password &&
+    userAuthenticated.password.length > 0 &&
+    userAuthenticated.email
+  ) {
     return props.children;
-  }
-   else {
+  }  else {
     return <Navigate to="/" />;
   }
 }

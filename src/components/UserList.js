@@ -1,6 +1,7 @@
 import React from 'react'
 // import userList from '../userList.json'
 import '../Styles/userList.css'
+import "../Styles/HotelAdmin.css";
 import { useNavigate } from 'react-router-dom'
 
 
@@ -14,7 +15,7 @@ export default function UserList() {
   return (
     <div>
           <button onClick={backToAdmin} className ="header-back">Back</button>
-          <div className='table-data'>
+          <div className='tables-data'>
         <table>
             <tr>
                 <th>User ID</th>
