@@ -22,6 +22,10 @@ export default function HotelList() {
     setDate(e.target.value);
   };
   console.log(date);
+  function handleSubmit(event) {
+    event.preventDefault();
+
+  }
   const displayUsers = hotelList
     .slice(pagesVisited, pagesVisited + usersPerPage)
     .map((hotel) => {
@@ -43,15 +47,18 @@ export default function HotelList() {
           <div className="home-content">
             <p>{hotel.website}</p>
           </div>
+          <form onSubmit={handleSubmit}>
           <div className="home-content">
             <label>
               <small> Booking Date: </small>
-              <input type="date" onChange={handleChange} ref={dateInputRef} />
+              <input type="date" onChange={handleChange} ref={dateInputRef} required/>
             </label>
+            
           </div>
+          
           <div className="home-content">
             <Link to={`/hotelInvoice/${hotel.id}`}>
-              <button
+              <button type="submit"
                 onClick={() => {
                   localStorage.setItem("hotelDetails", JSON.stringify(hotel));
                   console.log(hotel.name);
@@ -60,8 +67,10 @@ export default function HotelList() {
               >
                 Book Hotel
               </button>
+              
             </Link>
           </div>
+          </form>
         </div>
       );
     });
@@ -73,7 +82,9 @@ export default function HotelList() {
   return (
     <div>
       <Header name="Hotel List" />
-      <div className="home-container">{displayUsers}</div>
+      <div className="home-container">
+        {displayUsers}
+        </div>
       <ReactPaginate
         previousLabel={"Previous"}
         nextLabel={"Next"}

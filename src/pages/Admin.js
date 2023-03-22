@@ -97,7 +97,7 @@ export default function Admin() {
           required
         />
         <input
-          type="text"
+          type="number"
           placeholder="Hotel Phone"
           name="phone"
           value={adminHotel.phone}

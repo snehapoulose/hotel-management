@@ -12,11 +12,7 @@ describe("Test the HotelList component" ,()=>{
     })
     
 test("render the hotelList component with header child component", () => {
-  render(
-    <Router>
-      <Header />
-    </Router>
-  );
+  render( <Router><Header /></Router>);
   const linkElement = screen.getByText(/ Page/i);
   expect(linkElement).toBeInTheDocument();
 });

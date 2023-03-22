@@ -1,6 +1,7 @@
 import {render,screen} from '@testing-library/react';
 import Login from '../../pages/Login';
 import { BrowserRouter as Router } from 'react-router-dom';
+import Header from '../Header';
 
 describe("Test the login component",()=>{
     test("render the login form with login button and back button", async ()=>{
@@ -28,4 +29,10 @@ describe("Test the login component",()=>{
     //     render(<Router><Login/></Router>)
     //     expect(screen.getAllByRole('input')).toBeInTheDocument();
     // })
+    test("render the login component with header child component", () => {
+        render(<Router><Header /></Router>);
+        const linkElement = screen.getByText(/ Page/i);
+        expect(linkElement).toBeInTheDocument();
+      });
+   
 })
